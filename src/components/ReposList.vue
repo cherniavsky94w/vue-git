@@ -80,6 +80,7 @@ export default {
     reloadResults() {
       this.repos = [];
       this.total = 0;
+      this.query.page = 1;
       this.infinite = +new Date();
     },
     async fetchRepos($state) {
