@@ -31,3 +31,9 @@ export default {
   }
 };
 </script>
+
+<style>
+body {
+  min-width: 320px;
+}
+</style>

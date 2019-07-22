@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs8 sm8 md8>
+  <v-flex xs12 sm12 md8>
     <v-flex class="ma-3">
       <v-text-field
         flat
@@ -36,20 +36,26 @@
         </v-list-tile>
 
         <v-card-actions>
-          <v-list-tile class="grow">
-            <v-layout align-center justify-end>
-              <v-icon class="ma-1">stars</v-icon>
-              <span class="subheading mr-2">{{ item.stargazers_count }}</span>
-              <!-- <span class="ma-1">·</span> -->
-              <v-icon class="ma-1">visibility</v-icon>
-              <span class="subheading mr-2">{{ item.watchers }}</span>
-              <!-- <span class="ma-1">·</span> -->
-              <v-icon class="ma-1">device_hub</v-icon>
-              <span class="subheading mr-2">{{ item.forks_count }}</span>
-              <v-icon class="ma-1">error_outline</v-icon>
-              <span class="subheading">{{ item.open_issues_count }}</span>
-            </v-layout>
-          </v-list-tile>
+          <!-- <v-list-tile class="grow"> -->
+          <v-layout class="stars_info" align-center justify-end>
+            <v-btn flat small>
+              <v-icon left>stars</v-icon>
+              {{ item.stargazers_count }}
+            </v-btn>
+            <v-btn flat small>
+              <v-icon left>visibility</v-icon>
+              {{ item.watchers }}
+            </v-btn>
+            <v-btn flat small>
+              <v-icon left>device_hub</v-icon>
+              {{ item.forks_count }}
+            </v-btn>
+            <v-btn flat small>
+              <v-icon left>error_outline</v-icon>
+              {{ item.open_issues_count }}
+            </v-btn>
+          </v-layout>
+          <!-- </v-list-tile> -->
         </v-card-actions>
       </v-card>
       <infinite-loading :identifier="infinite" @infinite="fetchRepos"></infinite-loading>
@@ -106,5 +112,14 @@ export default {
   text-decoration: none;
   color: #333;
   cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .stars_info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 20px;
+  }
 }
 </style>
